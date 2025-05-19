@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proxy Tester Tool</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-xl">
+    <h1 class="text-2xl font-bold text-center mb-6 flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+      </svg>
+      Proxy Tester Tool
+    </h1>
+
+    <form id="proxyForm" class="space-y-4">
+      <div>
+        <label class="block font-semibold mb-1">Proxy (IP:PORT or user:pass@IP:PORT)</label>
+        <input type="text" id="proxy" name="proxy" required
+               class="w-full border-gray-300 rounded-md px-4 py-2 focus:ring-primary focus:border-primary border" />
+      </div>
+      <div>
+        <label class="block font-semibold mb-1">Test URL</label>
+        <input type="text" id="url" name="url" value="https://jsonplaceholder.typicode.com/todos/1" required
+               class="w-full border-gray-300 rounded-md px-4 py-2 focus:ring-primary focus:border-primary border" />
+      </div>
+      <button type="submit"
+              class="w-full bg-primary hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition">
+        🚀 Test Proxy
+      </button>
+    </form>
+    <div id="loader" class="flex justify-center items-center mt-6 hidden">
+  <svg class="animate-spin h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+  </svg>
+</div>
+
+
+    <div id="result" class="mt-6 hidden">
+      <div class="border-t pt-4 mt-4">
+        <h2 class="text-lg font-semibold mb-2">Result</h2>
+        <p><strong>Status:</strong> <span id="status" class="text-primary"></span></p>
+        <p><strong>Response Time:</strong> <span id="time"></span> ms</p>
+        <h3 class="font-semibold mt-4 mb-1">Parsed Data:</h3>
+        <pre id="jsonOutput" class="bg-gray-100 p-4 rounded-md overflow-x-auto text-sm text-gray-700"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
